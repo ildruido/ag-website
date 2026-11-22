@@ -23,7 +23,9 @@ for (const { lang, url, heading } of pages) {
       await expect(page.locator("html")).toHaveAttribute("lang", lang);
       await expect(page.getByRole("heading", { level: 1 })).toHaveText(heading);
       const other = lang === "en" ? "it" : "en";
-      await expect(page.locator(`link[rel=alternate][hreflang=${other}]`)).toHaveCount(1);
+      // The sample posts exist in one language only, so they declare no alternate.
+      const expected = url.includes("/blog/") && url !== `/${lang}/blog/` ? 0 : 1;
+      await expect(page.locator(`link[rel=alternate][hreflang=${other}]`)).toHaveCount(expected);
     });
 
     test("has no accessibility violations", async ({ page }) => {
@@ -51,4 +53,22 @@ test("the language switch goes to the other language", async ({ page }) => {
 test("a missing page shows the 404 page", async ({ page }) => {
   const res = await page.goto("/en/nothing-here/");
   expect(res?.status()).toBe(404);
+});
+
+test("the switch and the alternate link stay on the same page", async ({ page }) => {
+  await page.goto("/en/blog/");
+  await expect(page.locator("link[rel=alternate][hreflang=it]")).toHaveAttribute(
+    "href",
+    /\/it\/blog\/$/,
+  );
+  await page.getByRole("link", { name: "Italiano" }).click();
+  await expect(page).toHaveURL(/\/it\/blog\/$/);
+  await page.getByRole("link", { name: "English" }).click();
+  await expect(page).toHaveURL(/\/en\/blog\/$/);
+});
+
+test("a post only in one language declares no alternate", async ({ page }) => {
+  // hello (en) and ciao (it) have different slugs, so neither has a counterpart.
+  await page.goto("/en/blog/hello/");
+  await expect(page.locator("link[rel=alternate]")).toHaveCount(0);
 });
