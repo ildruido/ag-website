@@ -1,0 +1,207 @@
+{
+  "studio": "0.31.0",
+  "packs": {
+    "roadmap": "0.2.0",
+    "static-site": "0.1.0"
+  },
+  "app": {
+    "slug": "ag-website",
+    "title": "AG Website"
+  },
+  "instructions": "954092db6027eee2009a4cff86ecb4063109753df3701c3c1c6ba55cbe4f8296",
+  "files": {
+    ".claude/agents/planner.md": "fcf78830cc17271e9a157149b14089253d95d0dfbba0f42cb702f274aad69865",
+    ".claude/agents/qa.md": "eaef43c62a41fef318a02f5a6b64430f598b5ed9e40fa94e571d32448e294f94",
+    ".claude/agents/reviewer.md": "8397806d6ad0a18312d5724581f2ede5cec721a53db690295cb0a9a483469887",
+    ".claude/hooks/check.mjs": "783107ded65984b152d0dfae28c30b5bf2932f33c544ade595c294b3a004f0b5",
+    ".claude/hooks/cloud-setup.mjs": "6a856f37a92e047893486c9ee7061dcda45f29604b9459daad25b6784f32d1bd",
+    ".claude/hooks/pre-commit": "54e4800a520596f24dba9cc538de614882ede7555ff45c083f8432402835866b",
+    ".claude/packs/roadmap/STACK.md": "4666bc3e0e1f1a28c69a22f8227c9bf3d425b511b8b1ec54298532987039cf8c",
+    ".claude/packs/static-site/QA.md": "72998880236481e4832d73afd4bf5e17682ea139a1dff4ef992002aa2f070557",
+    ".claude/packs/static-site/RELEASE.md": "5e0c637744a900c7659676e8d47377b85a1de0497ca92d266897b8b9d4727472",
+    ".claude/packs/static-site/REVIEW.md": "55b5773ab9d56698cb5e11643fbdd62e1dd2b39415988bb1feaf2e25429a3c36",
+    ".claude/packs/static-site/STACK.md": "59d41155aae700dad2750676423ed1d2dd436c03d59f63e9821771dc4a3e8bb9",
+    ".claude/skills/build-feature/SKILL.md": "7c81d74b0edcc1b7102c3dde9c6d42e072de1476fc5eb41ea18348983cbefe56",
+    ".claude/skills/harness-idea/SKILL.md": "7f1f0c78c226c72bbb8a9716853fab3c829f168acf7051b1c39538d9f45a814e",
+    ".claude/skills/harness-idea/dup-search.mjs": "b7372a1d298619f5b7c667e0b2539e4acb86d0205df3cff69e92bd0571a34e4d",
+    ".claude/skills/harness-sync/SKILL.md": "6da982ed2c0c1fbc8fdbc05720dc2f4f962a12b605d3a6eb54ddf646a26b1c65",
+    ".claude/skills/migrate-app/SKILL.md": "606cbb76b320fbd5515e3ea0d03077bde61c33f5e34d594026d776a9907e6114",
+    ".claude/skills/new-app/SKILL.md": "b16f05b4e7f2a8ef5562219306eb98d8eb60d81f0562677bcf65c3f1205a5568",
+    ".claude/skills/prd-intake/SKILL.md": "641f4b3901eed9e7edd3c22eca4d68d9a2a694334104534f5af36ed92e29f1fd",
+    ".claude/skills/release/SKILL.md": "c68a09bf3708b3c3e0287e1a00838917a4e2d5c2cbf0ca3c98e4a785e4ec3cc1",
+    ".claude/skills/test-handoff/SKILL.md": "1bc11ac5b4589aef040a9127a6da8bb7f4395e2608b2926984fb3ecb63b4be6c",
+    ".claude/studio/studio-sync.mjs": "305fbc102568c4c0f954f3f1e538ce223be2c64c5c1d74ea954361d028027314"
+  },
+  "starters": {
+    ".gitattributes": {
+      "pack": "static-site",
+      "installed": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+      "seen": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+    },
+    ".github/workflows/ci.yml": {
+      "pack": "static-site",
+      "installed": "2bfa464803814b791fa397645f32bc92604989ebdaafa0fb0a7b8be3e26c9950",
+      "seen": "2bfa464803814b791fa397645f32bc92604989ebdaafa0fb0a7b8be3e26c9950"
+    },
+    ".github/workflows/deploy.yml": {
+      "pack": "static-site",
+      "installed": "ec3ee8318352495ea7c75fe14b12d8a16b9059e19338a582d4957a847597ed49",
+      "seen": "ec3ee8318352495ea7c75fe14b12d8a16b9059e19338a582d4957a847597ed49"
+    },
+    ".github/workflows/harness.yml": {
+      "pack": "static-site",
+      "installed": "63f65fbd1a050155d5eb18d204b9a227c2256092b5d30f38976ffbe020bb9e8a",
+      "seen": "63f65fbd1a050155d5eb18d204b9a227c2256092b5d30f38976ffbe020bb9e8a"
+    },
+    ".github/workflows/release-tag.yml": {
+      "pack": "static-site",
+      "installed": "bcffb0f658af5ce295b4df6235ba8d059c1d7a80448b4ce773efad8fedcdf2bd",
+      "seen": "bcffb0f658af5ce295b4df6235ba8d059c1d7a80448b4ce773efad8fedcdf2bd"
+    },
+    ".gitignore": {
+      "pack": "static-site",
+      "installed": "bfe959104fbe4e6d18f5d67a9e9079280b259d25a36bdf1e6b62537b108f72f9",
+      "seen": "bfe959104fbe4e6d18f5d67a9e9079280b259d25a36bdf1e6b62537b108f72f9"
+    },
+    ".nvmrc": {
+      "pack": "static-site",
+      "installed": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56",
+      "seen": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56"
+    },
+    ".prettierignore": {
+      "pack": "static-site",
+      "installed": "e18897670a407ef7bbffd744253544a3245cd16680a7ce0701cac5edafd66e07",
+      "seen": "e18897670a407ef7bbffd744253544a3245cd16680a7ce0701cac5edafd66e07"
+    },
+    ".prettierrc.json": {
+      "pack": "static-site",
+      "installed": "0a885747f7eccee454d660fcadb4094b18694b070ddb7ae6ff7a2502be965977",
+      "seen": "0a885747f7eccee454d660fcadb4094b18694b070ddb7ae6ff7a2502be965977"
+    },
+    "astro.config.mjs": {
+      "pack": "static-site",
+      "installed": "5ad898f1ce7c257a931f6ad1d1312dc0dd808a4838acaa9ce48da91dc3da467a",
+      "seen": "5ad898f1ce7c257a931f6ad1d1312dc0dd808a4838acaa9ce48da91dc3da467a"
+    },
+    "content-sample/en/hello.mdx": {
+      "pack": "static-site",
+      "installed": "02e7e8da500627b141b145cbb503aa20328dcff2c83aa0ade8a5c9c07358ab5f",
+      "seen": "02e7e8da500627b141b145cbb503aa20328dcff2c83aa0ade8a5c9c07358ab5f"
+    },
+    "content-sample/it/ciao.mdx": {
+      "pack": "static-site",
+      "installed": "03e4f57792a1248ba28e1f031ff9fec262dc288eec1241f06059cb183a55ca3d",
+      "seen": "03e4f57792a1248ba28e1f031ff9fec262dc288eec1241f06059cb183a55ca3d"
+    },
+    "docs/PREVIEW.md": {
+      "pack": "static-site",
+      "installed": "944980edf7db169a31bab277e5b288a1c0c003292da1aa1cc0534ad1be997f87",
+      "seen": "944980edf7db169a31bab277e5b288a1c0c003292da1aa1cc0534ad1be997f87"
+    },
+    "e2e/smoke.spec.ts": {
+      "pack": "static-site",
+      "installed": "d64098a70a249d9bc5c15e760679c82b4ccb23a7565b61c957c3279fcaf45560",
+      "seen": "d64098a70a249d9bc5c15e760679c82b4ccb23a7565b61c957c3279fcaf45560"
+    },
+    "eslint.config.js": {
+      "pack": "static-site",
+      "installed": "331b98d77148bd93e417795964a4646a14807ee3e999d66423f4225b314a45a2",
+      "seen": "331b98d77148bd93e417795964a4646a14807ee3e999d66423f4225b314a45a2"
+    },
+    "playwright.config.ts": {
+      "pack": "static-site",
+      "installed": "8ce528dfe6d281d9c75054c25dd1bf458eaa4f9c1d4de668ed0ed1c2fb5ce4b8",
+      "seen": "8ce528dfe6d281d9c75054c25dd1bf458eaa4f9c1d4de668ed0ed1c2fb5ce4b8"
+    },
+    "public/_headers": {
+      "pack": "static-site",
+      "installed": "fd3e6fd4c516baa14eea31be85ac3004cff272960ea0fed6b73f823805a17510",
+      "seen": "fd3e6fd4c516baa14eea31be85ac3004cff272960ea0fed6b73f823805a17510"
+    },
+    "public/favicon.svg": {
+      "pack": "static-site",
+      "installed": "d32a55f884791984771ac845edb887acc82bf91f77894ac0879aa3ac09d95c55",
+      "seen": "d32a55f884791984771ac845edb887acc82bf91f77894ac0879aa3ac09d95c55"
+    },
+    "public/robots.txt": {
+      "pack": "static-site",
+      "installed": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+      "seen": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
+    },
+    "scripts/roadmap/cli.ts": {
+      "pack": "roadmap",
+      "installed": "6c49e906f1fffe749ba86f343db6a7b89735d1274275f1cd2a5c6a826c8acfd1",
+      "seen": "6c49e906f1fffe749ba86f343db6a7b89735d1274275f1cd2a5c6a826c8acfd1"
+    },
+    "scripts/roadmap/roadmap.ts": {
+      "pack": "roadmap",
+      "installed": "c4fcfe3f88863fe4fe6059676a577a9fe46d44f56fbfc386a32c37b24815f156",
+      "seen": "c4fcfe3f88863fe4fe6059676a577a9fe46d44f56fbfc386a32c37b24815f156"
+    },
+    "scripts/serve.mjs": {
+      "pack": "static-site",
+      "installed": "128ebbae4f5e56a39ebbcf2898aee279f32165f0d0076843894254728aea0caa",
+      "seen": "128ebbae4f5e56a39ebbcf2898aee279f32165f0d0076843894254728aea0caa"
+    },
+    "src/content.config.ts": {
+      "pack": "static-site",
+      "installed": "e8084200f3bf000251d879ddc0357a1fc4137566486d4b6c54779785598cab05",
+      "seen": "e8084200f3bf000251d879ddc0357a1fc4137566486d4b6c54779785598cab05"
+    },
+    "src/layouts/Base.astro": {
+      "pack": "static-site",
+      "installed": "5390c249ed4957e2ca9d0c56043cf1e1915077003dc9a2d1982d991541b6c7d3",
+      "seen": "5390c249ed4957e2ca9d0c56043cf1e1915077003dc9a2d1982d991541b6c7d3"
+    },
+    "src/lib/i18n.ts": {
+      "pack": "static-site",
+      "installed": "e5938884e9167bb6bb3e036313420d16e3942a7fdf1b8b05a6fa3b1d0bb4c61d",
+      "seen": "e5938884e9167bb6bb3e036313420d16e3942a7fdf1b8b05a6fa3b1d0bb4c61d"
+    },
+    "src/pages/404.astro": {
+      "pack": "static-site",
+      "installed": "2553f8cc42c02bb9290341ed95d404d7371d81586f539c9a0cc6fadc94097d2d",
+      "seen": "2553f8cc42c02bb9290341ed95d404d7371d81586f539c9a0cc6fadc94097d2d"
+    },
+    "src/pages/[lang]/blog/[...slug].astro": {
+      "pack": "static-site",
+      "installed": "a20e95d6ab380e28f8c8140a150ec311f4c12a049747bbe47672b386af78f7cd",
+      "seen": "a20e95d6ab380e28f8c8140a150ec311f4c12a049747bbe47672b386af78f7cd"
+    },
+    "src/pages/[lang]/blog/index.astro": {
+      "pack": "static-site",
+      "installed": "ddb1c3a13ff28c03ad170e56531a0b31d56c714093d82523ff467abfc76fcd38",
+      "seen": "ddb1c3a13ff28c03ad170e56531a0b31d56c714093d82523ff467abfc76fcd38"
+    },
+    "src/pages/[lang]/index.astro": {
+      "pack": "static-site",
+      "installed": "8fa48782fbf844f205dc85fa7c52ed25dbe693de4fe32ed9f852c18633a3575c",
+      "seen": "8fa48782fbf844f205dc85fa7c52ed25dbe693de4fe32ed9f852c18633a3575c"
+    },
+    "src/styles/global.css": {
+      "pack": "static-site",
+      "installed": "8fdde9fb4f03d0acd10a166ea5df47397c5ff950fedb22612824a083fb425ab0",
+      "seen": "8fdde9fb4f03d0acd10a166ea5df47397c5ff950fedb22612824a083fb425ab0"
+    },
+    "tests/unit/i18n.test.ts": {
+      "pack": "static-site",
+      "installed": "e86355181675399be652c81ed0e42e62a6d75337769dd2c158f6be94c72b7a58",
+      "seen": "e86355181675399be652c81ed0e42e62a6d75337769dd2c158f6be94c72b7a58"
+    },
+    "tests/unit/roadmap.test.ts": {
+      "pack": "roadmap",
+      "installed": "e73f29aae09510f11ac4dcd10a3082196186dafe4bd61c6a31216e121c5f8838",
+      "seen": "e73f29aae09510f11ac4dcd10a3082196186dafe4bd61c6a31216e121c5f8838"
+    },
+    "tsconfig.json": {
+      "pack": "static-site",
+      "installed": "f7735dc08e8bc377d22936e1f78a2be46e913fa07eb8d4f07abaa6af6c9ec476",
+      "seen": "f7735dc08e8bc377d22936e1f78a2be46e913fa07eb8d4f07abaa6af6c9ec476"
+    },
+    "vitest.config.ts": {
+      "pack": "static-site",
+      "installed": "0f06cbb9d7109b4673288c6b8ebef827ced7616bdf15ae1012a674c9917a708d",
+      "seen": "0f06cbb9d7109b4673288c6b8ebef827ced7616bdf15ae1012a674c9917a708d"
+    }
+  }
+}
