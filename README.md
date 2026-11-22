@@ -1,4 +1,4 @@
-# Site (working name)
+# ag-website
 
 Code for a personal portfolio and blog. Published content lives in a separate repo.
 
