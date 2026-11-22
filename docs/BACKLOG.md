@@ -6,7 +6,7 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 
 - **Now:** AGW-001, AGW-002, AGW-003, AGW-004
 - **Next:** AGW-005, AGW-006, AGW-007, AGW-008
-- **Later:** AGW-009, AGW-010
+- **Later:** AGW-009, AGW-010, AGW-011
 
 ## Ready
 
@@ -83,6 +83,12 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - Acceptance criteria:
   - [ ] Given the chosen domain, then the site opens on it in both languages with HTTPS.
 - Notes: owner picks the site name and buys the domain (about £10/year); before the first post.
+
+### AGW-011 Renew the Cloudflare deploy token before it expires
+- Why: the deploy token expires on 2027-11-22; after that, releases and previews stop publishing.
+- Acceptance criteria:
+  - [ ] Given a date before 2027-11-22, then a new token is made (`docs/PREVIEW.md` step 3), the GitHub secret `CLOUDFLARE_API_TOKEN` is replaced, and a Deploy run succeeds.
+- Notes: reminder for the owner; due by 2027-11-08 to leave margin. Never put the token in the repo or chat.
 
 ## To test
 
