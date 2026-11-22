@@ -8,7 +8,7 @@ import { z } from "astro/zod";
 const base = process.env.CONTENT_DIR ?? "./content-sample";
 
 const posts = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base }),
+  loader: glob({ pattern: ["**/*.{md,mdx}", "!portfolio/**"], base }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
@@ -17,4 +17,18 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// Portfolio entries are files named portfolio/<language>/<slug>.md or .mdx. An entry about real
+// work may be named or anonymised: `client` is shown as given, so write "Anonymised" or a role
+// instead of a name when the work is confidential. A language with no file simply has no entry.
+const portfolio = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: `${base}/portfolio` }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    summary: z.string(),
+    client: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { posts, portfolio };
