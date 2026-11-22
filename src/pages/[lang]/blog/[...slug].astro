@@ -1,7 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Base from "../../../layouts/Base.astro";
-import { otherLang, ui, path, postLang, postSlug } from "../../../lib/i18n";
+import { hasCounterpart, otherLang, ui, path, postLang, postSlug } from "../../../lib/i18n";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", (p) => !p.data.draft && postLang(p.id) !== undefined);
@@ -9,8 +9,9 @@ export async function getStaticPaths() {
     params: { lang: postLang(post.id), slug: postSlug(post.id) },
     props: {
       post,
-      hasOther: posts.some(
-        (p) => postLang(p.id) !== postLang(post.id) && postSlug(p.id) === postSlug(post.id),
+      hasOther: hasCounterpart(
+        post.id,
+        posts.map((p) => p.id),
       ),
     },
   }));

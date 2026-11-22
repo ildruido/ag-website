@@ -12,5 +12,8 @@ const t = ui[lang];
 <Base lang={lang} title={t.siteTitle} description={t.intro} alternate={path(otherLang(lang))}>
   <h1>{t.welcome}</h1>
   <p>{t.intro}</p>
-  <p><a href={path(lang, "blog/")}>{t.blog}</a></p>
+  <p>
+    <a href={path(lang, "portfolio/")}>{t.portfolio}</a> · <a href={path(lang, "blog/")}>{t.blog}</a
+    >
+  </p>
 </Base>

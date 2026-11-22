@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import { languages, otherLang, ui, path, postLang, postSlug, type Lang } from "../../../lib/i18n";
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const t = ui[lang];
+const entries = (
+  await getCollection("portfolio", (p) => !p.data.draft && postLang(p.id) === lang)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Base
+  lang={lang}
+  title={`${t.portfolio} | ${t.siteTitle}`}
+  alternate={path(otherLang(lang), "portfolio/")}
+>
+  <h1>{t.portfolio}</h1>
+  {entries.length === 0 && <p>{t.noEntries}</p>}
+  <ul>
+    {
+      entries.map((entry) => (
+        <li>
+          <a href={path(lang, `portfolio/${postSlug(entry.id)}/`)}>{entry.data.title}</a>
+          <span class="muted"> · {entry.data.summary}</span>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

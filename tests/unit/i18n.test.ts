@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   defaultLang,
+  hasCounterpart,
   isLang,
   languages,
   otherLang,
@@ -35,5 +36,13 @@ describe("i18n", () => {
     expect(postLang("fr/salut")).toBeUndefined();
     expect(postLang("loose")).toBeUndefined();
     expect(postSlug("en/series/one")).toBe("series/one");
+  });
+
+  it("finds a counterpart only when the other language has the same slug", () => {
+    const ids = ["en/a", "it/a", "en/b", "it/c", "fr/b"];
+    expect(hasCounterpart("en/a", ids)).toBe(true);
+    expect(hasCounterpart("it/a", ids)).toBe(true);
+    expect(hasCounterpart("en/b", ids)).toBe(false);
+    expect(hasCounterpart("it/c", ids)).toBe(false);
   });
 });

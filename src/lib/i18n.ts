@@ -9,10 +9,12 @@ export const ui = {
     skip: "Skip to content",
     home: "Home",
     blog: "Blog",
+    portfolio: "Portfolio",
     language: "Italiano",
     welcome: "Welcome",
     intro: "A static site: fast, free to host and easy to keep.",
     noPosts: "No posts yet.",
+    noEntries: "No portfolio entries yet.",
     notFound: "This page does not exist.",
     back: "Back to the blog",
     about: "About / Method",
@@ -30,16 +32,19 @@ export const ui = {
       "Every page and post is reviewed and approved by me first. The site publishes only what I have approved.",
     disclosure: "Written by a human with AI assistance.",
     disclosureLink: "How I work",
+    backPortfolio: "Back to the portfolio",
   },
   it: {
     siteTitle: "AG Website",
     skip: "Vai al contenuto",
     home: "Home",
     blog: "Blog",
+    portfolio: "Portfolio",
     language: "English",
     welcome: "Benvenuto",
     intro: "Un sito statico: veloce, gratuito da ospitare e facile da mantenere.",
     noPosts: "Ancora nessun articolo.",
+    noEntries: "Ancora nessun lavoro in portfolio.",
     notFound: "Questa pagina non esiste.",
     back: "Torna al blog",
     about: "Chi sono / Metodo",
@@ -57,6 +62,7 @@ export const ui = {
       "Ogni pagina e articolo è rivisto e approvato da me. Il sito pubblica solo ciò che ho approvato.",
     disclosure: "Scritto da una persona con l'aiuto dell'AI.",
     disclosureLink: "Come lavoro",
+    backPortfolio: "Torna al portfolio",
   },
 } satisfies Record<Lang, Record<string, string>>;
 
@@ -82,4 +88,12 @@ export function postLang(id: string): Lang | undefined {
 /** The part of a post's id after its language folder ("en/hello" gives "hello"). */
 export function postSlug(id: string): string {
   return id.split("/").slice(1).join("/");
+}
+
+/** True when `id` (a "<language>/<slug>" id) has a counterpart with the same slug in the other language. */
+export function hasCounterpart(id: string, ids: readonly string[]): boolean {
+  const lang = postLang(id);
+  return ids.some(
+    (o) => postLang(o) !== lang && postLang(o) !== undefined && postSlug(o) === postSlug(id),
+  );
 }
