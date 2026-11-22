@@ -8,14 +8,14 @@ The site is plain files, published to Cloudflare's free static hosting (Pages) b
 2. Copy your **Account ID**: dash.cloudflare.com > Workers & Pages > the "Account ID" box on the right.
 3. Make the deploy key: top right profile icon > Profile > API credentials > API Tokens > Create token > name it `ag-website-deploy` > Policies: Start from scratch > Start with an Account policy > pick your account > search "Pages" > Cloudflare Pages: Edit > close the panel > Token expiration: 1 year > Continue to summary > Create Token. Copy the token now (it is shown once). Note the expiry date: the deploy stops working then, so renew it before (see `AGW-011` in the backlog).
 4. In GitHub, the `ag-website` repo > Settings > Secrets and variables > Actions > Secrets > New repository secret. Add `CLOUDFLARE_API_TOKEN` (the token) and `CLOUDFLARE_ACCOUNT_ID` (the Account ID).
-5. GitHub > Actions > Deploy > Run workflow (branch main). The first run creates the Cloudflare project and publishes the live site at `https://ag-website.pages.dev`. If the repo has a different name from the Cloudflare project you want, add a repository variable `CLOUDFLARE_PROJECT` first (Settings > Secrets and variables > Actions > Variables > New repository variable).
+5. GitHub > Actions > Deploy > Run workflow (branch main). The first run creates the Cloudflare project and publishes the live site at `https://ag-website-2ko.pages.dev` (the name `ag-website` was already taken on pages.dev, so Cloudflare added a suffix; the Deploy run now prints the real address). If the repo has a different name from the Cloudflare project you want, add a repository variable `CLOUDFLARE_PROJECT` first (Settings > Secrets and variables > Actions > Variables > New repository variable).
 6. Optional, your own domain: Cloudflare > Workers & Pages > the project > Custom domains > Set up a domain. Then add the repository variable `SITE_URL` with the full address (for example `https://example.com`) so canonical and alternate links use it.
 
 From then on a release (a merge that changes `version` in `package.json`) publishes by itself. Until step 4 is done, previews and deploys say what is missing; they do not fail ordinary PRs.
 
 ## Previews: one link per pull request
 
-Every ready PR from this repo is published at `https://pr-<number>.ag-website.pages.dev`, and the link is posted on the PR (the comment is updated on each push).
+Every ready PR from this repo is published at `https://pr-<number>.ag-website-2ko.pages.dev`, and the link is posted on the PR (the comment is updated on each push).
 
 **Previews are public.** Anyone with the link can open one. They are not listed anywhere and send `X-Robots-Tag: noindex, nofollow` (so search engines skip them), but a link shared by mistake shows a draft to the world. Keep unpublished or private content out of previews, or protect them as below.
 

@@ -14,7 +14,7 @@ The skills and agents in `.claude/` are the shared studio harness, copied from `
 | Stack | `static-site` |
 | User | the reader (a product peer, recruiter, hiring manager or founder), and the site owner who approves content |
 | Repo | https://github.com/ildruido/ag-website (private) |
-| Release target | https://ag-website.pages.dev (Cloudflare Pages; custom domain later) |
+| Release target | https://ag-website-2ko.pages.dev (Cloudflare Pages; custom domain later) |
 | Preview target | a public preview link per PR (`docs/PREVIEW.md`); previews of the separate content repo must be private (Cloudflare Access) |
 | Capabilities | none (a static site reaches no host capability) |
 | AI | `off` (the published site makes no AI calls) |

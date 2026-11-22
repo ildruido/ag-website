@@ -2,7 +2,7 @@ name: Deploy
 
 # Publishes the site to Cloudflare's free static hosting (Pages) with Wrangler.
 #   Preview     every ready pull request from this repo gets its own address,
-#               https://pr-<number>.<project>.pages.dev, posted on the PR. Previews are PUBLIC (anyone
+#               https://<branch>.<project>.pages.dev (the real address Cloudflare returns), posted on the PR. Previews are PUBLIC (anyone
 #               with the link can open them) but send "noindex" so search engines skip them; protect
 #               them with Cloudflare Access (docs/PREVIEW.md) or switch them off (repository variable
 #               PREVIEWS = off).
@@ -107,7 +107,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PR: ${{ github.event.pull_request.number }}
         run: |
-          url="https://${BRANCH}.${PROJECT}.pages.dev"
+          # Cloudflare adds a suffix when the project name is taken on pages.dev, so ask it for the real address.
+          sub=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$PROJECT" \
+            | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).result.subdomain")
+          url="https://${BRANCH}.${sub}"
           gh pr comment "$PR" --edit-last --create-if-none --body "Preview: $url
           (Public link unless Cloudflare Access protects previews; search engines are told to skip it.)"
 
@@ -160,8 +164,15 @@ jobs:
       - name: Build
         if: steps.release.outputs.release == 'true'
         env:
-          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.pages.dev', env.PROJECT) }}
+          SITE_URL: ${{ vars.SITE_URL }}
         run: |
+          if [ -z "$SITE_URL" ]; then
+            # No custom domain set: use the address Cloudflare really gave the project (it may carry a suffix).
+            sub=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$PROJECT" \
+              | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).result.subdomain" 2>/dev/null || true)
+            export SITE_URL="https://${sub:-$PROJECT.pages.dev}"
+          fi
           npm ci
           if [ -d content ]; then export CONTENT_DIR=./content; fi
           npm run build
@@ -171,3 +182,26 @@ jobs:
         run: |
           npx wrangler pages project create "$PROJECT" --production-branch main >/dev/null 2>&1 || true
           npx wrangler pages deploy dist --project-name "$PROJECT" --branch main --commit-dirty=true
+
+      - name: Check the live site is ours
+        if: steps.release.outputs.release == 'true'
+        run: |
+          # Cloudflare adds a suffix when the project name is taken on pages.dev, so ask it for the real address.
+          sub=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$PROJECT" \
+            | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).result.subdomain")
+          url="https://${sub}"
+          echo "Live address: $url"
+          echo "Live address: $url" >> "$GITHUB_STEP_SUMMARY"
+          for path in /en/ /it/; do
+            ok=no
+            for try in 1 2 3 4 5 6; do
+              title=$(curl -fsSL "$url$path" | grep -o '<title>[^<]*</title>' | head -1 || true)
+              case "$title" in *"AG Website"*) ok=yes; break;; esac
+              sleep 10
+            done
+            if [ "$ok" != yes ]; then
+              echo "::error::$url$path is not our site (title: ${title:-none})."
+              exit 1
+            fi
+          done
