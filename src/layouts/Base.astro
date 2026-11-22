@@ -6,8 +6,10 @@ interface Props {
   lang: Lang;
   title: string;
   description?: string;
+  /** The same page in the other language, if it exists. Left out: the switch goes to the other home page and no alternate link is declared. */
+  alternate?: string;
 }
-const { lang, title, description } = Astro.props;
+const { lang, title, description, alternate } = Astro.props;
 const t = ui[lang];
 const other = otherLang(lang);
 const site = Astro.site ?? new URL("http://localhost:4321");
@@ -21,8 +23,14 @@ const site = Astro.site ?? new URL("http://localhost:4321");
     {description && <meta name="description" content={description} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={new URL(Astro.url.pathname, site)} />
-    <link rel="alternate" hreflang={other} href={new URL(path(other), site)} />
-    <link rel="alternate" hreflang={lang} href={new URL(path(lang), site)} />
+    {
+      alternate && (
+        <>
+          <link rel="alternate" hreflang={other} href={new URL(alternate, site)} />
+          <link rel="alternate" hreflang={lang} href={new URL(Astro.url.pathname, site)} />
+        </>
+      )
+    }
   </head>
   <body>
     <a class="skip" href="#main">{t.skip}</a>
@@ -30,7 +38,7 @@ const site = Astro.site ?? new URL("http://localhost:4321");
       <nav aria-label="Main">
         <a href={path(lang)}>{t.siteTitle}</a>
         <a href={path(lang, "blog/")}>{t.blog}</a>
-        <a href={path(other)} hreflang={other} lang={other}>{t.language}</a>
+        <a href={alternate ?? path(other)} hreflang={other} lang={other}>{t.language}</a>
       </nav>
     </header>
     <main id="main">
