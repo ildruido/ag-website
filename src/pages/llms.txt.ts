@@ -1,16 +1,21 @@
 import type { APIRoute } from "astro";
 import { buildLlms } from "../lib/discovery";
 import { ui } from "../lib/i18n";
-import { livePages, livePosts } from "../lib/site";
+import { livePages, livePortfolio, livePosts } from "../lib/site";
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await livePosts();
-  const postUrls = new Set(posts.map((p) => p.url));
-  const pages = livePages(posts).filter((p) => !postUrls.has(p.url));
+  const work = await livePortfolio();
+  const entryUrls = new Set([...posts, ...work].map((p) => p.url));
+  const pages = livePages([...posts, ...work]).filter((p) => !entryUrls.has(p.url));
   const sections = (["en", "it"] as const).flatMap((lang) => [
     {
       heading: lang === "en" ? "Pages (English)" : "Pagine (Italiano)",
       entries: pages.filter((p) => p.lang === lang),
+    },
+    {
+      heading: lang === "en" ? "Portfolio (English)" : "Portfolio (Italiano)",
+      entries: work.filter((p) => p.lang === lang),
     },
     {
       heading: lang === "en" ? "Posts (English)" : "Articoli (Italiano)",

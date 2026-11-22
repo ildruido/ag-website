@@ -1,10 +1,19 @@
 // Everything the machine-readable files and the footer need to know about live pages.
 import { getCollection } from "astro:content";
-import { languages, otherLang, path, postLang, postSlug, ui, type Lang } from "./i18n";
+import {
+  hasCounterpart,
+  languages,
+  otherLang,
+  path,
+  postLang,
+  postSlug,
+  ui,
+  type Lang,
+} from "./i18n";
 import type { Entry } from "./discovery";
 
 /** The fixed pages every language has. */
-export const staticPages = ["", "blog/", "about/", "privacy/", "contact/"] as const;
+export const staticPages = ["", "blog/", "portfolio/", "about/", "privacy/", "contact/"] as const;
 
 export async function livePosts(): Promise<Entry[]> {
   const posts = await getCollection("posts", (p) => !p.data.draft && postLang(p.id) !== undefined);
@@ -19,6 +28,30 @@ export async function livePosts(): Promise<Entry[]> {
       date: p.data.date,
       description: p.data.description,
       alternate: hasOther ? path(otherLang(lang), `blog/${slug}/`) : undefined,
+    };
+  });
+}
+
+export async function livePortfolio(): Promise<Entry[]> {
+  const items = await getCollection(
+    "portfolio",
+    (p) => !p.data.draft && postLang(p.id) !== undefined,
+  );
+  return items.map((p) => {
+    const lang = postLang(p.id)!;
+    const slug = postSlug(p.id);
+    return {
+      lang,
+      url: path(lang, `portfolio/${slug}/`),
+      title: p.data.title,
+      date: p.data.date,
+      description: p.data.summary,
+      alternate: hasCounterpart(
+        p.id,
+        items.map((q) => q.id),
+      )
+        ? path(otherLang(lang), `portfolio/${slug}/`)
+        : undefined,
     };
   });
 }
@@ -39,6 +72,7 @@ function titleOf(lang: Lang, rest: string) {
   const t = ui[lang];
   const map: Record<string, string> = {
     "blog/": t.blog,
+    "portfolio/": t.portfolio,
     "about/": t.about,
     "privacy/": t.privacy,
     "contact/": t.contact,
