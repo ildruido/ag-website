@@ -14,8 +14,8 @@
 
 | | **Site** (build & maintain) | **Publishing** (business as usual) |
 |---|---|---|
-| Repo | `site` (private, working name): code, design, templates, content schema, publishing tools, CI, deploy, sample content for tests | `content` (private, working name): everything published (posts EN/IT, portfolio, About/Method, legal text), briefs, source snapshots, LinkedIn texts, decision log |
-| Claude Code Project | **Site** Project, using **app-studio**, with `app-studio` and `site` attached | **Publishing** Project with only `content` attached; a light editorial setup (its own `CLAUDE.md` and workflow skills), not app-studio |
+| Repo | `ag-website` (private): code, design, templates, content schema, publishing tools, CI, deploy, sample content for tests | `content` (private, working name): everything published (posts EN/IT, portfolio, About/Method, legal text), briefs, source snapshots, LinkedIn texts, decision log |
+| Claude Code Project | **Site** Project, using **app-studio**, with `app-studio` and `ag-website` attached | **Publishing** Project with only `content` attached; a light editorial setup (its own `CLAUDE.md` and workflow skills), not app-studio |
 | Who merges | Claude, automatically when checks pass (normal app-studio) | **Only you.** Your Merge publishes |
 | Rhythm | Project-like: backlog, milestones, releases | Continuous: one thread per post |
 | You use it for | Testing site changes, asking for features or fixes | The whole content workflow, from idea to approval (your single interface for publishing) |
@@ -41,7 +41,7 @@
 | Benefit | Detail |
 |---|---|
 | Approval is structural | Every merge in `content` is a publish by you, and the audit is trivial |
-| App-studio fits cleanly | `site` is a normal app; its auto-merge stays exactly as designed |
+| App-studio fits cleanly | `ag-website` is a normal app; its auto-merge stays exactly as designed |
 | Single interface for publishing | The Publishing Project is the one place you use for content; building the site is a different job with its own place |
 | Lighter token use | Publishing threads don't load the app-building harness, and deterministic checks run in CI, not in Claude (Intent §15) |
 | Content survives tech changes | Plain files, independent of the site framework |
@@ -70,9 +70,9 @@
 
 Each milestone ends with a test script and your OK.
 
-**Step 0. Close inception (this session).** You OK this plan. I create the private `site` repo and push this folder into `docs/inception/` (the confirmed intent and report are the inputs, the Gemini drafts are history). I file HI-1 and HI-2 as GitHub issues in app-studio.
+**Step 0. Close inception (this session).** You OK this plan. I create the private `ag-website` repo and push this folder into `docs/inception/` (the confirmed intent and report are the inputs, the Gemini drafts are history). I file HI-1 and HI-2 as GitHub issues in app-studio.
 
-**Step 1. App-studio change (app-studio Project).** Build HI-1 and HI-2 per app-studio governance; you approve.
+**Step 1. App-studio change (app-studio Project).** Build HI-1 and HI-2 per app-studio governance; you approve. **Done 2026-11-22:** app-studio 0.29.0 (Owner-merged repos), 0.30.0 (`static-site` pack), 0.30.1 (hooks run in Project threads), 0.31.0 (`new-app` offers a static site). Not yet verified by app-studio: a real Cloudflare deploy, Access, the content-repo checkout (ag-website is first).
 
 **Step 2. Site bootstrap (new Site Project, `new-app` thread).** Core harness plus `static-site` pack. The App profile, domain rules and the PRD/backlog are produced from `docs/inception/`.
 
@@ -86,7 +86,7 @@ Each milestone ends with a test script and your OK.
 
 **Step 5. Workflow design, then tools.** A design conversation with you covering stages, brief template, categories, and which steps are deterministic or AI-assisted. Then:
 - the Publishing Project's skills and `CLAUDE.md` (in `content`);
-- the deterministic tools (in `site`, run by CI on `content`);
+- the deterministic tools (in `ag-website`, run by CI on `content`);
 - the Gemini second-opinion check.
 
 **Step 6. LinkedIn auto-post.** Runs after the live check, with an alert before the access token expires.
@@ -99,7 +99,7 @@ Each milestone ends with a test script and your OK.
 |---|---|---|
 | Step 0 | OK this plan; OK me creating the repo and filing HI-1 and HI-2 | 5 min |
 | Step 1 | Approve the app-studio changes in its Project | 10 min |
-| Step 2 | Create the **Site** Project (attach `app-studio` + `site`, select the "app-studio apps" environment), paste the kickoff message I give you, do the repo-settings clicks | 15 min |
+| Step 2 | Create the **Site** Project (attach `app-studio` + `ag-website`, select the "app-studio apps" environment), paste the kickoff message I give you, do the repo-settings clicks | 15 min |
 | Step 3 | Create a free Cloudflare account; create the deploy token and add it as a GitHub secret (exact clicks) | 15 min |
 | Step 4 | Create the `content` repo rules and the cross-repo key (exact clicks); create the **Publishing** Project; if the merge test fails, choose (a) or (b) | 20 min |
 | Step 4 | Upload your CV, product notes and 2–3 writing samples; approve portfolio, Method page and disclosure text; press Merge | 1 session |
@@ -113,5 +113,5 @@ Each milestone ends with a test script and your OK.
 - **Claude merge test (step 4)** decides whether enforcement is structural or needs your choice.
 - **Claude Pro usage** across two Projects: app-studio defaults kept (Sonnet threads, Opus coordinator); usage checked after step 3.
 - **Web research in cloud threads** must work *(verify in step 5)*.
-- **Cross-repo access** from `content` CI to the private `site` repo *(verify the simplest key type, and whether it expires)*.
+- **Cross-repo access** from `content` CI to the private `ag-website` repo *(verify the simplest key type, and whether it expires)*.
 - All *(verify)* items in Report section 4.
