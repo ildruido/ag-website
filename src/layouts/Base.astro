@@ -38,6 +38,7 @@ const site = Astro.site ?? new URL("http://localhost:4321");
       <nav aria-label="Main">
         <a href={path(lang)}>{t.siteTitle}</a>
         <a href={path(lang, "blog/")}>{t.blog}</a>
+        <a href={path(lang, "about/")}>{t.about}</a>
         <a href={alternate ?? path(other)} hreflang={other} lang={other}>{t.language}</a>
       </nav>
     </header>

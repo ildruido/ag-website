@@ -15,6 +15,21 @@ export const ui = {
     noPosts: "No posts yet.",
     notFound: "This page does not exist.",
     back: "Back to the blog",
+    about: "About / Method",
+    aboutIntro: "How the content on this site is made.",
+    aboutSample:
+      "Sample text: the owner replaces it with approved wording before anything goes live.",
+    aboutHuman: "What I do",
+    aboutHumanText:
+      "I choose the topics, set the direction, check every claim and approve every post before it is published.",
+    aboutAi: "What AI does",
+    aboutAiText:
+      "AI helps me research, draft and translate. It never publishes anything on its own.",
+    aboutApproval: "Nothing goes live without my approval",
+    aboutApprovalText:
+      "Every page and post is reviewed and approved by me first. The site publishes only what I have approved.",
+    disclosure: "Written by a human with AI assistance.",
+    disclosureLink: "How I work",
   },
   it: {
     siteTitle: "AG Website",
@@ -27,6 +42,21 @@ export const ui = {
     noPosts: "Ancora nessun articolo.",
     notFound: "Questa pagina non esiste.",
     back: "Torna al blog",
+    about: "Chi sono / Metodo",
+    aboutIntro: "Come nascono i contenuti di questo sito.",
+    aboutSample:
+      "Testo di esempio: il proprietario lo sostituisce con il testo approvato prima della pubblicazione.",
+    aboutHuman: "Cosa faccio io",
+    aboutHumanText:
+      "Scelgo gli argomenti, decido la direzione, verifico ogni affermazione e approvo ogni articolo prima della pubblicazione.",
+    aboutAi: "Cosa fa l'AI",
+    aboutAiText:
+      "L'AI mi aiuta a fare ricerca, scrivere bozze e tradurre. Non pubblica mai nulla da sola.",
+    aboutApproval: "Nulla va online senza la mia approvazione",
+    aboutApprovalText:
+      "Ogni pagina e articolo è rivisto e approvato da me. Il sito pubblica solo ciò che ho approvato.",
+    disclosure: "Scritto da una persona con l'aiuto dell'AI.",
+    disclosureLink: "Come lavoro",
   },
 } satisfies Record<Lang, Record<string, string>>;
 

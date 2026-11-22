@@ -30,6 +30,10 @@ const { Content } = await render(post);
   <article>
     <h1>{post.data.title}</h1>
     <p class="muted">{post.data.date.toISOString().slice(0, 10)}</p>
+    <p class="muted" data-testid="ai-disclosure">
+      {t.disclosure}
+      <a href={path(lang, "about/")}>{t.disclosureLink}</a>
+    </p>
     <Content />
   </article>
   <p><a href={path(lang, "blog/")}>{t.back}</a></p>
