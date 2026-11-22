@@ -1,0 +1,83 @@
+# Backlog
+
+Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.md`. Order within Ready is priority.
+
+## Ready
+
+### AGW-001 Bilingual site foundation on a free address
+- Why: readers can open a fast, readable site in English or Italian.
+- Acceptance criteria:
+  - [ ] Given the live address, when a visitor opens the home page, then it shows in English with a visible switch to Italian, and the Italian home page switches back.
+  - [ ] Given a phone-width screen, when any page is opened, then it reads well with no sideways scrolling.
+  - [ ] Given each language page, when its source is inspected, then it has the correct language tag and links to its alternate language.
+  - [ ] Given the site, then it shows sample content only and is deployed at the free Cloudflare address.
+- Notes: depends on the Cloudflare account and deploy token (Admin checklist, `docs/PREVIEW.md`). Uses `content-sample/`.
+
+### AGW-002 About / Method page and AI disclosure line
+- Why: build trust by explaining how content is made.
+- Acceptance criteria:
+  - [ ] Given the site, when a visitor opens About / Method in either language, then it explains the hybrid human + AI process in plain words (sample text until the owner approves real text).
+  - [ ] Given any post, then it shows one short disclosure line that links to the About / Method page in the post's language.
+- Notes: real wording is approved by the owner via `ag-content`.
+
+### AGW-003 Portfolio and blog pages with sample content
+- Why: the two parts of the site, ready for real content.
+- Acceptance criteria:
+  - [ ] Given sample content, when a visitor opens Portfolio and Blog in either language, then each shows a list and each entry opens its own page.
+  - [ ] Given a post live in one language only, then the site links to the other language only once it exists.
+- Notes: content schema supports the per-post language option (PRD 6).
+
+### AGW-004 Legal pages, contact route, RSS, sitemap and llms.txt
+- Why: a complete, discoverable, compliant site.
+- Acceptance criteria:
+  - [ ] Given the site, then privacy/legal and contact pages exist in both languages.
+  - [ ] Given the site, then an RSS feed, a sitemap and `llms.txt` are published and list only live content.
+- Notes: no cookies or tracking in the MVP; Cloudflare Web Analytics is optional later.
+
+### AGW-005 Content repo link and private preview check
+- Why: the owner's merge in `ag-content` must be the only way to publish, and drafts must stay private.
+- Acceptance criteria:
+  - [ ] Given `ildruido/ag-content`, when the owner merges a content PR, then the site rebuilds with that content and deploys.
+  - [ ] Given a content PR preview, when opened while signed out, then it shows the login page, and a blocking check fails the PR if it is publicly readable.
+  - [ ] Given a test merge attempt by Claude in `ag-content`, then GitHub refuses it (or the owner chooses fallback (a) or (b) from the plan).
+- Notes: needs the Admin to create `ag-content`, its rules, the cross-repo key and Cloudflare Access (exact clicks to be given). Plan step 4.
+
+### AGW-006 Publishing checks on content PRs
+- Why: integrity problems block a post before the owner sees it.
+- Acceptance criteria:
+  - [ ] Given a content PR, when a quote is not verbatim in its saved source, a secret is staged, the build fails, or a required language is missing, then the PR is blocked with the reason shown.
+  - [ ] Given a style problem (tone, length, banned phrases), then a warning is shown but the PR is not blocked.
+  - [ ] Given a content PR, then a Gemini second opinion is posted as a comment (free tier).
+- Notes: plan steps 4–5; Gemini key as a GitHub secret, never in chat.
+
+### AGW-007 Approval record and go-live chain
+- Why: publishing is automatic after approval and always traceable.
+- Acceptance criteria:
+  - [ ] Given the owner merges a content PR, then the site is built, deployed, confirmed live, and the owner is told what went live with links.
+  - [ ] Given a publish, then approval state, check results and revision history are stored as data in `ag-content`.
+  - [ ] Given a request to take a post down, then reverting it is one step.
+
+### AGW-008 LinkedIn auto-post
+- Why: distribution without manual copy-paste.
+- Acceptance criteria:
+  - [ ] Given a post confirmed live, then its approved LinkedIn text (one per language) is posted automatically.
+  - [ ] Given a failed post or a token about to expire, then the owner is alerted and the site stays live.
+- Notes: official API, free developer app; may require a LinkedIn Page (verify). If it cannot be free or automatic, ask the owner before choosing a fallback.
+
+## Backlog
+
+### AGW-009 Design the guided content workflow
+- Why: the owner is taken from idea to full brief in a defined process.
+- Acceptance criteria:
+  - [ ] Given a design conversation, then stages, brief template, categories, and which steps are deterministic or AI-assisted are agreed and recorded in the PRD.
+- Notes: plan step 5; a discussion with the owner, not code. Leads to the Publishing Project's skills in `ag-content`.
+
+### AGW-010 Connect the domain
+- Why: the site lives at the owner's own name.
+- Acceptance criteria:
+  - [ ] Given the chosen domain, then the site opens on it in both languages with HTTPS.
+- Notes: owner picks the site name and buys the domain (about £10/year); before the first post.
+
+## To test
+
+## Done
