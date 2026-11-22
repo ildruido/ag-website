@@ -1,0 +1,23 @@
+---
+import Base from "../../layouts/Base.astro";
+import { languages, otherLang, ui, path, type Lang } from "../../lib/i18n";
+import { contactEmail } from "../../lib/site";
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const t = ui[lang];
+---
+
+<Base
+  lang={lang}
+  title={`${t.contact} | ${t.siteTitle}`}
+  description={t.contactIntro}
+  alternate={path(otherLang(lang), "contact/")}
+>
+  <h1>{t.contact}</h1>
+  <p>{t.contactIntro}</p>
+  <p><a href={`mailto:${contactEmail}`} data-testid="contact-email">{t.contactEmail}</a></p>
+  <p class="muted">{contactEmail}</p>
+</Base>

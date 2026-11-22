@@ -9,6 +9,10 @@ const pages = [
   { lang: "it", url: "/it/blog/", heading: "Blog" },
   { lang: "en", url: "/en/about/", heading: "About / Method" },
   { lang: "it", url: "/it/about/", heading: "Chi sono / Metodo" },
+  { lang: "en", url: "/en/privacy/", heading: "Privacy" },
+  { lang: "it", url: "/it/privacy/", heading: "Privacy" },
+  { lang: "en", url: "/en/contact/", heading: "Contact" },
+  { lang: "it", url: "/it/contact/", heading: "Contatti" },
   { lang: "en", url: "/en/blog/hello/", heading: "Hello" },
   { lang: "it", url: "/it/blog/ciao/", heading: "Ciao" },
   { lang: "en", url: "/en/blog/both-languages/", heading: "Both languages", alternate: true },
@@ -91,7 +95,7 @@ test("the switch and the alternate link stay on the same page", async ({ page })
 test("a post only in one language declares no alternate", async ({ page }) => {
   // hello (en) and ciao (it) have different slugs, so neither has a counterpart.
   await page.goto("/en/blog/hello/");
-  await expect(page.locator("link[rel=alternate]")).toHaveCount(0);
+  await expect(page.locator("link[rel=alternate][hreflang]")).toHaveCount(0);
 });
 
 test("every post shows an AI disclosure linking to About / Method in its language", async ({
@@ -156,7 +160,58 @@ test("an entry in one language only is not offered in the other", async ({ page 
   const res = await page.goto("/it/portfolio/english-only/");
   expect(res?.status()).toBe(404);
   await page.goto("/en/portfolio/english-only/");
-  await expect(page.locator("link[rel=alternate]")).toHaveCount(0);
+  await expect(page.locator("link[rel=alternate][hreflang]")).toHaveCount(0);
   await page.getByRole("link", { name: "Italiano" }).click();
   await expect(page).toHaveURL(/\/it\/$/);
+});
+
+test("the footer links to privacy, contact and the feed in each language", async ({ page }) => {
+  for (const [lang, privacy, contact] of [
+    ["en", "Privacy", "Contact"],
+    ["it", "Privacy", "Contatti"],
+  ]) {
+    await page.goto(`/${lang}/`);
+    const footer = page.locator("footer");
+    await footer.getByRole("link", { name: privacy }).click();
+    await expect(page).toHaveURL(new RegExp(`/${lang}/privacy/$`));
+    await footer.getByRole("link", { name: contact }).click();
+    await expect(page).toHaveURL(new RegExp(`/${lang}/contact/$`));
+    await expect(page.getByTestId("contact-email")).toHaveAttribute("href", /^mailto:.+@.+/);
+  }
+});
+
+test("the privacy page says there are no cookies and none are set", async ({ page, context }) => {
+  await page.goto("/en/privacy/");
+  await expect(page.getByRole("heading", { name: "No cookies, no tracking" })).toBeVisible();
+  expect(await context.cookies()).toEqual([]);
+});
+
+test("RSS, sitemap, llms.txt and robots.txt list only live content", async ({ request }) => {
+  const rssEn = await (await request.get("/en/rss.xml")).text();
+  expect(rssEn).toContain("/en/blog/hello/");
+  expect(rssEn).not.toContain("/it/");
+  const rssIt = await (await request.get("/it/rss.xml")).text();
+  expect(rssIt).toContain("/it/blog/ciao/");
+  expect(rssIt).not.toContain("/en/blog/");
+
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  for (const u of ["/en/", "/it/privacy/", "/en/contact/", "/en/blog/hello/", "/it/blog/ciao/"]) {
+    expect(sitemap).toContain(`<loc>http://localhost:4321${u}</loc>`);
+  }
+  // hello exists in English only, so no Italian twin is declared.
+  expect(sitemap).not.toContain("/it/blog/hello/");
+  // Portfolio: the sample project exists in both languages, the English-only one does not.
+  expect(sitemap).toContain("/it/portfolio/sample-project/");
+  expect(sitemap).toContain("/en/portfolio/english-only/");
+  expect(sitemap).not.toContain("/it/portfolio/english-only/");
+
+  const llms = await (await request.get("/llms.txt")).text();
+  expect(llms).toMatch(/^# /);
+  expect(llms).toContain("/en/blog/hello/");
+  expect(llms).toContain("/it/blog/ciao/");
+  expect(llms).toContain("/it/portfolio/sample-project/");
+  expect(llms).not.toContain("/it/portfolio/english-only/");
+
+  const robots = await (await request.get("/robots.txt")).text();
+  expect(robots).toContain("Sitemap: http://localhost:4321/sitemap.xml");
 });
