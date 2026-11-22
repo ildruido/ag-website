@@ -4,6 +4,10 @@ All notable changes. Format: Keep a Changelog; versions: SemVer.
 
 ## Unreleased
 
+### Fixed
+
+- The live address is `https://ag-website-2ko.pages.dev` (the name `ag-website` belongs to someone else on pages.dev). The Deploy workflow now reports the real address Cloudflare returns, builds with it, and fails the release if `/en/` or `/it/` there don't have "AG Website" in the page title.
+
 ### Added
 
 - Privacy and Contact pages in English and Italian (no cookies, no tracking; contact by email, address set with `PUBLIC_CONTACT_EMAIL`, sample until then), linked from a new footer. Per-language RSS feeds (`/en/rss.xml`, `/it/rss.xml`), `sitemap.xml`, `llms.txt` and `robots.txt`, all listing live content only (portfolio entries included).
