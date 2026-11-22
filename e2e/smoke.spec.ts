@@ -7,6 +7,8 @@ const pages = [
   { lang: "it", url: "/it/", heading: "Benvenuto" },
   { lang: "en", url: "/en/blog/", heading: "Blog" },
   { lang: "it", url: "/it/blog/", heading: "Blog" },
+  { lang: "en", url: "/en/about/", heading: "About / Method" },
+  { lang: "it", url: "/it/about/", heading: "Chi sono / Metodo" },
   { lang: "en", url: "/en/blog/hello/", heading: "Hello" },
   { lang: "it", url: "/it/blog/ciao/", heading: "Ciao" },
 ];
@@ -71,4 +73,29 @@ test("a post only in one language declares no alternate", async ({ page }) => {
   // hello (en) and ciao (it) have different slugs, so neither has a counterpart.
   await page.goto("/en/blog/hello/");
   await expect(page.locator("link[rel=alternate]")).toHaveCount(0);
+});
+
+test("every post shows an AI disclosure linking to About / Method in its language", async ({
+  page,
+}) => {
+  const cases = [
+    { url: "/en/blog/hello/", lang: "en", name: "How I work" },
+    { url: "/it/blog/ciao/", lang: "it", name: "Come lavoro" },
+  ];
+  for (const { url, lang, name } of cases) {
+    await page.goto(url);
+    const line = page.getByTestId("ai-disclosure");
+    await expect(line).toBeVisible();
+    await line.getByRole("link", { name }).click();
+    await expect(page).toHaveURL(new RegExp(`/${lang}/about/$`));
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  }
+});
+
+test("About / Method is reachable from the menu and switches language", async ({ page }) => {
+  await page.goto("/en/");
+  await page.getByRole("link", { name: "About / Method" }).click();
+  await expect(page).toHaveURL(/\/en\/about\/$/);
+  await page.getByRole("link", { name: "Italiano" }).click();
+  await expect(page).toHaveURL(/\/it\/about\/$/);
 });
