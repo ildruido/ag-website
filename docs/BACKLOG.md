@@ -18,13 +18,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
   - [ ] Given a post live in one language only, then the site links to the other language only once it exists.
 - Notes: content schema supports the per-post language option (PRD 6).
 
-### AGW-004 Legal pages, contact route, RSS, sitemap and llms.txt
-- Why: a complete, discoverable, compliant site.
-- Acceptance criteria:
-  - [ ] Given the site, then privacy/legal and contact pages exist in both languages.
-  - [ ] Given the site, then an RSS feed, a sitemap and `llms.txt` are published and list only live content.
-- Notes: no cookies or tracking in the MVP; Cloudflare Web Analytics is optional later.
-
 ### AGW-005 Content repo link and private preview check
 - Why: the owner's merge in `ag-content` must be the only way to publish, and drafts must stay private.
 - Acceptance criteria:
@@ -92,5 +85,12 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
   - [x] Given the site, when a visitor opens About / Method in either language, then it explains the hybrid human + AI process in plain words (sample text until the owner approves real text).
   - [x] Given any post, then it shows one short disclosure line that links to the About / Method page in the post's language.
 - Notes: real wording is approved by the owner via `ag-content`.
+
+### AGW-004 Legal pages, contact route, RSS, sitemap and llms.txt
+- Why: a complete, discoverable, compliant site.
+- Acceptance criteria:
+  - [x] Given the site, then privacy/legal and contact pages exist in both languages.
+  - [x] Given the site, then an RSS feed, a sitemap and `llms.txt` are published and list only live content.
+- Notes: no cookies or tracking in the MVP; Cloudflare Web Analytics is optional later.
 
 ## Done

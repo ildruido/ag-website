@@ -22,6 +22,7 @@ const site = Astro.site ?? new URL("http://localhost:4321");
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={t.rss} href={path(lang, "rss.xml")} />
     <link rel="canonical" href={new URL(Astro.url.pathname, site)} />
     {
       alternate && (
@@ -45,5 +46,10 @@ const site = Astro.site ?? new URL("http://localhost:4321");
     <main id="main">
       <slot />
     </main>
+    <footer>
+      <a href={path(lang, "privacy/")}>{t.privacy}</a>
+      <a href={path(lang, "contact/")}>{t.contact}</a>
+      <a href={path(lang, "rss.xml")}>{t.rss}</a>
+    </footer>
   </body>
 </html>
