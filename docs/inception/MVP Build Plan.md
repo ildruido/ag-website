@@ -81,6 +81,7 @@ Each milestone ends with a test script and your OK.
 **Step 4. Content repo and publishing pipeline (Site Project builds it).**
 - Create `content` and its repo rules, then run the **"Claude cannot merge" test** (section 2).
 - Build cross-repo preview and deploy, the blocking and warning checks, the go-live chain and the approval record.
+- **Private previews (decided 2026-11-22):** previews of `content` PRs sit behind Cloudflare Access (free; the owner signs in with an email code) **before the first real content PR**. A **blocking check** opens the preview while signed out and expects the login page; a publicly readable preview stops the post. Site-code previews (sample content only) may stay public. Why: the static-site pack's previews are public by default (app-studio #183), and a public draft, above all an unchecked portfolio entry, would be early publishing.
 - **The first real use:** portfolio entries (with the confidentiality checklist), the About/Method page and the disclosure line go live through your Merge.
 
 **Step 5. Workflow design, then tools.** A design conversation with you covering stages, brief template, categories, and which steps are deterministic or AI-assisted. Then:
