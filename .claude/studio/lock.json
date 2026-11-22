@@ -1,6 +1,7 @@
 {
   "studio": "0.31.0",
   "packs": {
+    "roadmap": "0.2.0",
     "static-site": "0.1.0"
   },
   "app": {
@@ -15,6 +16,7 @@
     ".claude/hooks/check.mjs": "783107ded65984b152d0dfae28c30b5bf2932f33c544ade595c294b3a004f0b5",
     ".claude/hooks/cloud-setup.mjs": "6a856f37a92e047893486c9ee7061dcda45f29604b9459daad25b6784f32d1bd",
     ".claude/hooks/pre-commit": "54e4800a520596f24dba9cc538de614882ede7555ff45c083f8432402835866b",
+    ".claude/packs/roadmap/STACK.md": "4666bc3e0e1f1a28c69a22f8227c9bf3d425b511b8b1ec54298532987039cf8c",
     ".claude/packs/static-site/QA.md": "72998880236481e4832d73afd4bf5e17682ea139a1dff4ef992002aa2f070557",
     ".claude/packs/static-site/RELEASE.md": "5e0c637744a900c7659676e8d47377b85a1de0497ca92d266897b8b9d4727472",
     ".claude/packs/static-site/REVIEW.md": "55b5773ab9d56698cb5e11643fbdd62e1dd2b39415988bb1feaf2e25429a3c36",
@@ -126,6 +128,16 @@
       "installed": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
       "seen": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95"
     },
+    "scripts/roadmap/cli.ts": {
+      "pack": "roadmap",
+      "installed": "6c49e906f1fffe749ba86f343db6a7b89735d1274275f1cd2a5c6a826c8acfd1",
+      "seen": "6c49e906f1fffe749ba86f343db6a7b89735d1274275f1cd2a5c6a826c8acfd1"
+    },
+    "scripts/roadmap/roadmap.ts": {
+      "pack": "roadmap",
+      "installed": "c4fcfe3f88863fe4fe6059676a577a9fe46d44f56fbfc386a32c37b24815f156",
+      "seen": "c4fcfe3f88863fe4fe6059676a577a9fe46d44f56fbfc386a32c37b24815f156"
+    },
     "scripts/serve.mjs": {
       "pack": "static-site",
       "installed": "128ebbae4f5e56a39ebbcf2898aee279f32165f0d0076843894254728aea0caa",
@@ -175,6 +187,11 @@
       "pack": "static-site",
       "installed": "e86355181675399be652c81ed0e42e62a6d75337769dd2c158f6be94c72b7a58",
       "seen": "e86355181675399be652c81ed0e42e62a6d75337769dd2c158f6be94c72b7a58"
+    },
+    "tests/unit/roadmap.test.ts": {
+      "pack": "roadmap",
+      "installed": "e73f29aae09510f11ac4dcd10a3082196186dafe4bd61c6a31216e121c5f8838",
+      "seen": "e73f29aae09510f11ac4dcd10a3082196186dafe4bd61c6a31216e121c5f8838"
     },
     "tsconfig.json": {
       "pack": "static-site",

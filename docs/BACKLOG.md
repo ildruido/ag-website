@@ -2,6 +2,12 @@
 
 Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.md`. Order within Ready is priority.
 
+## Roadmap
+
+- **Now:** AGW-001, AGW-002, AGW-003, AGW-004
+- **Next:** AGW-005, AGW-006, AGW-007, AGW-008
+- **Later:** AGW-009, AGW-010
+
 ## Ready
 
 ### AGW-001 Bilingual site foundation on a free address
