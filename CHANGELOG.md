@@ -10,6 +10,8 @@ All notable changes. Format: Keep a Changelog; versions: SemVer.
 
 ### Fixed
 
+- Docs: the free address named in `docs/PREVIEW.md` is `ag-website-2ko.pages.dev` (the app's real one).
+
 - The live address is `https://ag-website-2ko.pages.dev` (the name `ag-website` belongs to someone else on pages.dev). The Deploy workflow now reports the real address Cloudflare returns, builds with it, and fails the release if `/en/` or `/it/` there don't have "AG Website" in the page title.
 
 ### Added

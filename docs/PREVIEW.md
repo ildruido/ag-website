@@ -1,6 +1,6 @@
 # Hosting and previews (Cloudflare, free)
 
-The site is plain files, published to Cloudflare's free static hosting (Pages) by `.github/workflows/deploy.yml`. Nothing runs on a server. Cost: the hosting is free; only a domain name costs money (optional: the free `ag-website.pages.dev` address works).
+The site is plain files, published to Cloudflare's free static hosting (Pages) by `.github/workflows/deploy.yml`. Nothing runs on a server. Cost: the hosting is free; only a domain name costs money (optional: the free `ag-website-2ko.pages.dev` address works).
 
 ## Set-up (once, about 10 minutes, on a computer)
 
