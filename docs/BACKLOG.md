@@ -59,7 +59,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - Notes: reminder for the owner; due by 2027-11-08 to leave margin. Never put the token in the repo or chat.
 
 ## To test
-
 ### AGW-001 Bilingual site foundation on a free address
 - Why: readers can open a fast, readable site in English or Italian.
 - Acceptance criteria:
@@ -83,7 +82,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
   - [x] Given the site, then an RSS feed, a sitemap and `llms.txt` are published and list only live content.
 - Notes: no cookies or tracking in the MVP; Cloudflare Web Analytics is optional later.
 
-## In progress
 ### AGW-005 Content repo link and private preview check
 - Why: the owner's merge in `ag-content` must be the only way to publish, and drafts must stay private.
 - Acceptance criteria:
@@ -91,5 +89,7 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
   - [ ] Given a content PR preview, when opened while signed out, then it shows the login page, and a blocking check fails the PR if it is publicly readable.
   - [ ] Given a test merge attempt by Claude in `ag-content`, then GitHub refuses it (or the owner chooses fallback (a) or (b) from the plan).
 - Notes: needs the Admin to create `ag-content`, its rules, the cross-repo key and Cloudflare Access (exact clicks to be given). Plan step 4.
+
+## In progress
 
 ## Done
