@@ -4,7 +4,7 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 
 ## Roadmap
 
-- **Now:** AGW-001, AGW-002, AGW-003, AGW-004
+- **Now:** AGW-002, AGW-003, AGW-004
 - **Next:** AGW-005, AGW-006, AGW-007, AGW-008
 - **Later:** AGW-009, AGW-010, AGW-011
 
@@ -59,15 +59,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - Notes: reminder for the owner; due by 2027-11-08 to leave margin. Never put the token in the repo or chat.
 
 ## To test
-### AGW-001 Bilingual site foundation on a free address
-- Why: readers can open a fast, readable site in English or Italian.
-- Acceptance criteria:
-  - [x] Given the live address, when a visitor opens the home page, then it shows in English with a visible switch to Italian, and the Italian home page switches back.
-  - [x] Given a phone-width screen, when any page is opened, then it reads well with no sideways scrolling.
-  - [x] Given each language page, when its source is inspected, then it has the correct language tag and links to its alternate language.
-  - [x] Given the site, then it shows sample content only and is deployed at the free Cloudflare address.
-- Notes: depends on the Cloudflare account and deploy token (Admin checklist, `docs/PREVIEW.md`). Uses `content-sample/`.
-
 ### AGW-002 About / Method page and AI disclosure line
 - Why: build trust by explaining how content is made.
 - Acceptance criteria:
@@ -93,3 +84,4 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 ## In progress
 
 ## Done
+- AGW-001 Bilingual site foundation on a free address — v0.1.0
