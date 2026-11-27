@@ -13,7 +13,7 @@ The skills and agents in `.claude/` are the shared studio harness, copied from `
 | Id prefix | `AGW` (backlog items are `AGW-001`, `AGW-002`, …) |
 | Stack | `static-site` |
 | User | the reader (a product peer, recruiter, hiring manager or founder), and the site owner who approves content |
-| Repo | https://github.com/ildruido/ag-website (private) |
+| Repo | https://github.com/ildruido/ag-website (public since 2026-11-27; real unpublished content never lives here) |
 | Release target | https://ag-website-2ko.pages.dev (Cloudflare Pages; custom domain later) |
 | Preview target | a public preview link per PR (`docs/PREVIEW.md`); previews of the separate content repo must be private (Cloudflare Access) |
 | Capabilities | none (a static site reaches no host capability) |
