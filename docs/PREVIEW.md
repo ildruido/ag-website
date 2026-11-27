@@ -41,7 +41,7 @@ The content repo is `ildruido/ag-content`. A merge there is your approval and pu
 
 **A. Create the repo.** GitHub > New repository > owner `ildruido`, name `ag-content`, **Private**, add a README. Put posts in `en/` and `it/` (same layout as `content-sample/`).
 
-**B. Make your Merge the only way to publish.** In `ag-content`: Settings > Rules > Rulesets > New ruleset > New branch ruleset.
+**B. Make your Merge the only way to publish.** Note: on GitHub's Free plan, rulesets are not enforced on private repos. If Settings > Rules says so, upgrade is not needed: skip B, use fallback (a) or (b) from step F, and still do the other steps. In `ag-content`: Settings > Rules > Rulesets > New ruleset > New branch ruleset.
 
 1. Ruleset 1, name `Only the owner updates main`. Enforcement: Active. Bypass list > Add bypass > Repository admin, mode "For pull requests only". Target branches > Add target > Include default branch. Rules: tick **Restrict updates** and **Block force pushes**. Create.
 2. Ruleset 2, name `Checks for everyone`. Enforcement: Active. Bypass list: leave empty (so the checks bind you too). Target: default branch. Rules: tick **Require a pull request before merging** and **Require status checks to pass** > Add checks > `private-preview` (it appears after the first PR has run; add it then). Create.
@@ -55,7 +55,7 @@ The content repo is `ildruido/ag-content`. A merge there is your approval and pu
 
 **D. Secrets and workflows in `ag-content`.**
 
-1. Settings > Secrets and variables > Actions > New repository secret: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` (the same values as in the site repo; Step 3 above).
+1. Settings > Secrets and variables > Actions > New repository secret: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` (the same values as in the site repo; the token is shown only once, so paste the one you saved or make a new one with Step 3 above).
 2. GitHub profile > Settings > Developer settings > Personal access tokens > Fine-grained tokens > Generate new token. Name `ag-content-publish`, Expiration 1 year, Repository access: Only select repositories > `ag-website`, Repository permissions > Contents > **Read and write**. Copy it into an `ag-content` secret named `SITE_DISPATCH_TOKEN`. Note the expiry date: publishing stops then.
 3. Add the two files from `docs/content-repo/` (`content-preview.yml`, `publish.yml`) to `ag-content` under `.github/workflows/`, on a branch, and open a PR. Its check `private-preview` must pass; if it fails with "PUBLIC", step C is not done.
 
