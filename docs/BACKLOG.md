@@ -4,18 +4,11 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 
 ## Roadmap
 
-- **Now:** AGW-003, AGW-004
+- **Now:** AGW-004
 - **Next:** AGW-005, AGW-006, AGW-007, AGW-008
 - **Later:** AGW-009, AGW-010, AGW-011
 
 ## Ready
-### AGW-003 Portfolio and blog pages with sample content
-- Why: the two parts of the site, ready for real content.
-- Acceptance criteria:
-  - [ ] Given sample content, when a visitor opens Portfolio and Blog in either language, then each shows a list and each entry opens its own page.
-  - [ ] Given a post live in one language only, then the site links to the other language only once it exists.
-- Notes: content schema supports the per-post language option (PRD 6).
-
 ### AGW-006 Publishing checks on content PRs
 - Why: integrity problems block a post before the owner sees it.
 - Acceptance criteria:
@@ -77,5 +70,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 ## In progress
 
 ## Done
+- AGW-003 Portfolio and blog pages with sample content — v0.1.0
 - AGW-002 About / Method page and AI disclosure line — v0.1.0
 - AGW-001 Bilingual site foundation on a free address — v0.1.0
