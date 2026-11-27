@@ -42,6 +42,7 @@ Newsletter, other social channels, analytics dashboards, the custom review page 
 | 2026-11-22 | Models by role; Gemini free-tier API for the independent second opinion | Report 3.10 |
 | 2026-11-22 | LinkedIn: one post per language, approved with its article | Report 4.2 |
 | 2026-11-22 | Content previews private (Cloudflare Access); site-code previews may be public | MVP Build Plan 5, step 4 |
+| 2026-11-27 | `ag-website` is public; `ag-content` stays private (drafts must not be readable before the owner merges) | Owner, AGW-005 |
 | 2026-11-22 | AI off, access "anyone, no login", storage none (site itself) | static-site pack |
 | TBD | Site name and domain; content categories; research tools; success measures | Report 4.8–4.11 |
 
