@@ -4,6 +4,10 @@ All notable changes. Format: Keep a Changelog; versions: SemVer.
 
 ## Unreleased
 
+### Changed
+
+- Harness updated from studio 0.31.0 to 0.48.0 (skills, agents, hooks, push gate; no change to the site). The app keeps its own deploy workflow and preview notes.
+
 ### Fixed
 
 - The live address is `https://ag-website-2ko.pages.dev` (the name `ag-website` belongs to someone else on pages.dev). The Deploy workflow now reports the real address Cloudflare returns, builds with it, and fails the release if `/en/` or `/it/` there don't have "AG Website" in the page title.
