@@ -9,22 +9,12 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - **Later:** AGW-009, AGW-010, AGW-011
 
 ## Ready
-
-
 ### AGW-003 Portfolio and blog pages with sample content
 - Why: the two parts of the site, ready for real content.
 - Acceptance criteria:
   - [ ] Given sample content, when a visitor opens Portfolio and Blog in either language, then each shows a list and each entry opens its own page.
   - [ ] Given a post live in one language only, then the site links to the other language only once it exists.
 - Notes: content schema supports the per-post language option (PRD 6).
-
-### AGW-005 Content repo link and private preview check
-- Why: the owner's merge in `ag-content` must be the only way to publish, and drafts must stay private.
-- Acceptance criteria:
-  - [ ] Given `ildruido/ag-content`, when the owner merges a content PR, then the site rebuilds with that content and deploys.
-  - [ ] Given a content PR preview, when opened while signed out, then it shows the login page, and a blocking check fails the PR if it is publicly readable.
-  - [ ] Given a test merge attempt by Claude in `ag-content`, then GitHub refuses it (or the owner chooses fallback (a) or (b) from the plan).
-- Notes: needs the Admin to create `ag-content`, its rules, the cross-repo key and Cloudflare Access (exact clicks to be given). Plan step 4.
 
 ### AGW-006 Publishing checks on content PRs
 - Why: integrity problems block a post before the owner sees it.
@@ -69,7 +59,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - Notes: reminder for the owner; due by 2027-11-08 to leave margin. Never put the token in the repo or chat.
 
 ## To test
-
 ### AGW-001 Bilingual site foundation on a free address
 - Why: readers can open a fast, readable site in English or Italian.
 - Acceptance criteria:
@@ -92,5 +81,15 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
   - [x] Given the site, then privacy/legal and contact pages exist in both languages.
   - [x] Given the site, then an RSS feed, a sitemap and `llms.txt` are published and list only live content.
 - Notes: no cookies or tracking in the MVP; Cloudflare Web Analytics is optional later.
+
+### AGW-005 Content repo link and private preview check
+- Why: the owner's merge in `ag-content` must be the only way to publish, and drafts must stay private.
+- Acceptance criteria:
+  - [ ] Given `ildruido/ag-content`, when the owner merges a content PR, then the site rebuilds with that content and deploys.
+  - [ ] Given a content PR preview, when opened while signed out, then it shows the login page, and a blocking check fails the PR if it is publicly readable.
+  - [ ] Given a test merge attempt by Claude in `ag-content`, then GitHub refuses it (or the owner chooses fallback (a) or (b) from the plan).
+- Notes: needs the Admin to create `ag-content`, its rules, the cross-repo key and Cloudflare Access (exact clicks to be given). Plan step 4.
+
+## In progress
 
 ## Done

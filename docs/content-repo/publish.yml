@@ -1,0 +1,29 @@
+# Copy this file to the CONTENT repo as .github/workflows/publish.yml (steps: docs/PREVIEW.md,
+# "Content repo: private previews and publishing").
+#
+# A merge into main of the content repo is the owner's approval. This tells the site repo to rebuild with the
+# newest content and deploy (its Deploy workflow listens for "content-updated"). Needs the secret
+# SITE_DISPATCH_TOKEN. A missing token FAILS, so a merge never looks published when it is not.
+name: Publish
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tell-the-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ secrets.SITE_DISPATCH_TOKEN }}
+    steps:
+      - name: Ask the site to rebuild
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::The secret SITE_DISPATCH_TOKEN is missing, so the site was NOT told to publish. See docs/PREVIEW.md in the site repo."
+            exit 1
+          fi
+          gh api repos/ildruido/ag-website/dispatches -f event_type=content-updated
