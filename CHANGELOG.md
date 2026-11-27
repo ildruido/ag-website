@@ -2,7 +2,9 @@
 
 All notable changes. Format: Keep a Changelog; versions: SemVer.
 
-## Unreleased
+## [Unreleased]
+
+## [0.1.0] - 2026-11-27
 
 ### Changed
 
