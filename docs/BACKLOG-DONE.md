@@ -2,6 +2,14 @@
 
 Finished items, newest first.
 
+### AGW-002 About / Method page and AI disclosure line
+- Done in: v0.1.0
+- Why: build trust by explaining how content is made.
+- Acceptance criteria:
+  - [x] Given the site, when a visitor opens About / Method in either language, then it explains the hybrid human + AI process in plain words (sample text until the owner approves real text).
+  - [x] Given any post, then it shows one short disclosure line that links to the About / Method page in the post's language.
+- Notes: real wording is approved by the owner via `ag-content`.
+
 ### AGW-001 Bilingual site foundation on a free address
 - Done in: v0.1.0
 - Why: readers can open a fast, readable site in English or Italian.

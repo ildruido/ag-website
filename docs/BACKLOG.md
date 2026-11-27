@@ -4,7 +4,7 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 
 ## Roadmap
 
-- **Now:** AGW-002, AGW-003, AGW-004
+- **Now:** AGW-003, AGW-004
 - **Next:** AGW-005, AGW-006, AGW-007, AGW-008
 - **Later:** AGW-009, AGW-010, AGW-011
 
@@ -59,13 +59,6 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 - Notes: reminder for the owner; due by 2027-11-08 to leave margin. Never put the token in the repo or chat.
 
 ## To test
-### AGW-002 About / Method page and AI disclosure line
-- Why: build trust by explaining how content is made.
-- Acceptance criteria:
-  - [x] Given the site, when a visitor opens About / Method in either language, then it explains the hybrid human + AI process in plain words (sample text until the owner approves real text).
-  - [x] Given any post, then it shows one short disclosure line that links to the About / Method page in the post's language.
-- Notes: real wording is approved by the owner via `ag-content`.
-
 ### AGW-004 Legal pages, contact route, RSS, sitemap and llms.txt
 - Why: a complete, discoverable, compliant site.
 - Acceptance criteria:
@@ -84,4 +77,5 @@ Item template and rules: `CLAUDE.md`. Finished items move to `docs/BACKLOG-DONE.
 ## In progress
 
 ## Done
+- AGW-002 About / Method page and AI disclosure line — v0.1.0
 - AGW-001 Bilingual site foundation on a free address — v0.1.0
